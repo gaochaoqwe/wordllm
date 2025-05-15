@@ -1,0 +1,36 @@
+{
+  "flask": {
+    "SECRET_KEY": "dev-secret-key",
+    "DEBUG": true
+  },
+  "database": {
+    "DATABASE_URI": "sqlite:///wordllm.db"
+  },
+  "jwt": {
+    "JWT_SECRET_KEY": "dev-jwt-secret-key",
+    "JWT_ACCESS_TOKEN_EXPIRES": 1
+  },
+  "file_upload": {
+    "UPLOAD_FOLDER": "uploads",
+    "STORAGE_FOLDER": "storage",
+    "MAX_CONTENT_LENGTH": 16
+  },
+  "openai": {
+    "OPENAI_API_KEY": "sk-kwmzlwamflklwslrcyunnvyuqveuuzesljlsjktnipekossw",
+    "OPENAI_MODEL_NAME": "Qwen/Qwen3-32B",
+    "OPENAI_API_BASE": "https://api.siliconflow.cn/v1"
+  },
+  "rate_limit": {
+    "RATE_LIMIT_WINDOW_MS": 900000,
+    "RATE_LIMIT_MAX_REQUESTS": 100
+  },
+  "cors": {
+    "CORS_ORIGIN": "http://localhost:5174"
+  },
+  "websocket": {
+    "WS_HEARTBEAT_INTERVAL": 30000
+  },
+  "server": {
+    "PORT": 5000
+  }
+}
