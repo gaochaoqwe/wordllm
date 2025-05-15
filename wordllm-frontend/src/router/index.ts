@@ -57,7 +57,7 @@ const router = createRouter({
     {
       path: '/document/editor',
       name: 'document-editor',
-      component: () => import('../views/document/DocumentEditorContainer.vue')
+      component: () => import('../views/document/contentedit/DocumentEditorContainer.vue')
     }
   ]
 })

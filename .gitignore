@@ -6,6 +6,9 @@ __pycache__/
 *.pyc
 *.pyo
 
+# 忽略指定目录
+LightRAG-main/
+
 # 编译和构建产物
 dist/
 build/

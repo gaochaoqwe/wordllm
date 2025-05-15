@@ -1,17 +1,21 @@
 <template>
   <div>
     <el-progress :percentage="progressPercent" style="margin-bottom: 16px;" />
-    <div v-if="generating" class="generating-tip">正在生成第 {{ currentIdx + 1 }}/{{ chapters.length }} 章：{{ chapters[currentIdx]?.title }}</div>
-    <ChapterContentList :chapterContents="chapterStates" />
-    <div v-if="errorMsg" class="error-msg">{{ errorMsg }}</div>
+    <div v-if="generating" class="generating-tip">
+      正在生成第 {{ currentIdx + 1 }}/{{ chapters.length }} 章：{{ chapters[currentIdx]?.title }}
+    </div>
+    <ChapterContentList :chapter-contents="chapterStates" />
+    <div v-if="errorMsg" class="error-msg">
+      {{ errorMsg }}
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import ChapterContentList from './ChapterContentList.vue'
-import { generateChapterContent } from '@/services/documentService'
+import { generateChapterContent } from '@/views/document/contentedit/services/documentService'
 
 const props = defineProps({
   templateId: { type: [String, Number], required: true },

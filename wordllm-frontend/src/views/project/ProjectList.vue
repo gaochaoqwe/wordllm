@@ -72,13 +72,13 @@
               type="primary" 
               @click="handleEdit(row)"
             >
-              <el-icon><EditIcon /></el-icon>编辑
+              <el-icon><EditIcon /></el-icon>编辑内容
             </el-button>
             <el-button 
               size="small" 
               @click="handleView(row)"
             >
-              查看
+              编辑目录
             </el-button>
             <el-button 
               size="small" 
@@ -150,7 +150,7 @@ import {
   Edit as EditIcon,
   Plus as PlusIcon,
 } from '@element-plus/icons-vue'
-import { fetchProjects, type Project } from '@/services/projectService';
+import { fetchProjects, type Project } from '@/views/project/services/projectService';
 
 const router = useRouter()
 
@@ -237,10 +237,18 @@ const handleEdit = (project: Project) => {
   })
 }
 
-// 查看项目
+// 编辑目录
 const handleView = (project: Project) => {
-  console.log('查看项目:', project.id)
-  ElMessage.info(`查看项目: ${project.project_name || project.title}`)
+  console.log('编辑项目目录:', project.id)
+  
+  // 跳转到大纲结果页面
+  router.push({
+    path: '/document/outline-result',
+    query: {
+      projectId: project.id.toString(),
+      templateId: project.template_id ? project.template_id.toString() : null
+    }
+  })
 }
 
 // 删除项目
