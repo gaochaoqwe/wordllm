@@ -10,24 +10,45 @@
       
       <!-- 右侧AI聊天对话框 -->
       <div class="ai-chat-panel">
-        <h2 class="panel-title">
-          AI助手
-        </h2>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <h2 class="panel-title">
+            AI助手
+          </h2>
+          <el-button
+            size="small"
+            type="success"
+            @click="showDownloadOptions = true"
+          >
+            下载全文
+          </el-button>
+        </div>
         <AiChatBox 
           :chapter="currentChapter" 
           @generate-content="handleGenerateContent"
         />
       </div>
     </div>
+    <el-dialog
+      v-model="showDownloadOptions"
+      title="下载全文设置"
+      width="900px"
+      top="5vh"
+      destroy-on-close
+    >
+      <DownloadDocxOptions @cancel="showDownloadOptions = false" @confirm="showDownloadOptions = false" />
+    </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { provide } from 'vue'
+import { ref, provide } from 'vue'
 import { useDocumentEditor } from './composables/useDocumentEditor'
 import ContentEditor from './ContentEditor.vue'
 import OutlinePanel from './components/OutlinePanel.vue'
 import AiChatBox from './components/AiChatBox.vue'
+import DownloadDocxOptions from './downloadDocx/DownloadDocxOptions.vue'
+
+const showDownloadOptions = ref(false)
 
 // 使用组合式API获取共享状态和方法
 const documentEditor = useDocumentEditor()

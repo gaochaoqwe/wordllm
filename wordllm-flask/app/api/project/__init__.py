@@ -3,6 +3,7 @@ from .routes import create_project, get_project, get_projects
 from .chapters import get_project_chapters, save_project_chapters, update_chapter, get_chapter
 from .document import generate_document_content, update_document
 from .chat import document_chat
+from .export import bp as export_bp
 
 bp = Blueprint('project', __name__)
 
@@ -23,3 +24,6 @@ bp.add_url_rule('/documents/<int:doc_id>', view_func=update_document, methods=['
 
 # AI文档聊天相关路由
 bp.add_url_rule('/documents/chat', view_func=document_chat, methods=['POST'])
+
+# 注册文档导出子模块
+bp.register_blueprint(export_bp)
